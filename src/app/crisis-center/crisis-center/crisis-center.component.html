@@ -1,0 +1,12 @@
+<h3>Top Crises</h3>
+<div class="grid grid-pad">
+  <a *ngFor="let crisis of crises" class="col-1-4" routerLink="{{crisis.id}}">
+    <div class="module hero">
+      <h4>{{crisis.name}}</h4>
+    </div>
+  </a>
+</div>
+
+<button routerLink="list">Go to Crises list</button>
+<router-outlet></router-outlet>
+

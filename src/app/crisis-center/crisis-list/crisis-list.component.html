@@ -1,0 +1,21 @@
+<h2>My Crises</h2>
+<ul class="crises">
+  <li *ngFor="let crisis of crises" [class.selected]="crisis.id == selectedId">
+    <a routerLink="{{crisis.id}}">
+      <span class="badge">{{crisis.id}}</span> {{crisis.name}}
+    </a>
+    <button class="delete" title="delete crisis" (click)="delete(crisis.id)">x</button>
+  </li>
+</ul>
+
+
+<div>
+  <label>Crisis name:
+    <input #crisisName />
+  </label>
+  <button class="add" (click)="add(crisisName.value); crisisName.value=''">
+    add
+  </button>
+</div>
+
+<router-outlet></router-outlet>
