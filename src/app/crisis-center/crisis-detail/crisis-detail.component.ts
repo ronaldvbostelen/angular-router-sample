@@ -5,6 +5,7 @@ import {Crisis} from '../../heroes/models/crisis';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {CrisisService} from '../services/crisis.service';
 import {switchMap} from 'rxjs/operators';
+import {DialogService} from '../../services/dialog.service';
 
 @Component({
   selector: 'app-crisis-detail',
@@ -14,10 +15,12 @@ import {switchMap} from 'rxjs/operators';
 export class CrisisDetailComponent implements OnInit {
   crisis$: Observable<Crisis>;
   crisis: Crisis;
+  editName: string;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
-              private crisesService: CrisisService) { }
+              private crisesService: CrisisService,
+              public dialogService: DialogService) { }
 
   ngOnInit(): void {
     this.crisis$ = this.route.paramMap.pipe(
@@ -34,9 +37,11 @@ export class CrisisDetailComponent implements OnInit {
     }
 
     this.crisis = crisis;
+    this.editName = crisis.name;
   }
 
   save(): void{
+    this.crisis.name = this.editName;
     this.crisesService.updateCrisis(this.crisis).subscribe();
   }
 
