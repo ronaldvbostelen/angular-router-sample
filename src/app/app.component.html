@@ -3,7 +3,8 @@
   <nav>
     <a class="button" routerLink="/crisis-center" routerLinkActive="activebutton">Crisis Center</a>
     <a class="button" routerLink="/heroes-dashboard" routerLinkActive="activebutton">Heroes</a>
-    <a [routerLink]="[{outlets: {popup: ['compose']}}]">Contact</a>
+    <a class="button" routerLink="/admin" routerLinkActive="activebutton">Admin</a>
+    <a class="button" [routerLink]="[{outlets: {popup: ['compose']}}]">Contact</a>
   </nav>
 </header>
 <main>
