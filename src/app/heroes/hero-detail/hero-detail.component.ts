@@ -1,9 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Hero } from '../models/hero';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, ParamMap} from '@angular/router';
 import { Location } from '@angular/common';
 
 import { HeroService } from '../services/hero.service';
+import {switchMap} from 'rxjs/operators';
+import {of} from 'rxjs';
 
 @Component({
   selector: 'app-hero-detail',
@@ -23,8 +25,11 @@ export class HeroDetailComponent implements OnInit {
   }
 
   getHero(): void{
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.heroService.getHero(id).subscribe(h => this.hero = h);
+    this.route.paramMap.pipe(
+      switchMap((params: ParamMap) => {
+        this.heroService.getHero(+params.get('id')).subscribe(h => this.hero = h);
+        return of(params);
+      })).subscribe();
   }
 
   goBack(): void{

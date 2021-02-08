@@ -10,7 +10,7 @@ import {CrisisDetailResolverService} from './guards/crisis-detail-resolver.servi
 
 const routes: Routes = [
   {
-    path: 'crisis-center',
+    path: '',
     component: CrisisCenterComponent,
     children: [
       {

@@ -6,11 +6,9 @@ import {ManageHeroComponent} from './manage-hero/manage-hero.component';
 import {AdminDashboardComponent} from './admin-dashboard/admin-dashboard.component';
 import {AuthGuard} from '../auth/auth.guard';
 
-
-
 const routes: Routes = [
   {
-    path: 'admin',
+    path: '',
     component: AdminComponent,
     canActivate: [AuthGuard],
     children: [
