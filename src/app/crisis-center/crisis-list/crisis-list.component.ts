@@ -4,6 +4,7 @@ import {CrisisService} from '../services/crisis.service';
 import {Crisis} from '../../heroes/models/crisis';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 import {switchMap} from 'rxjs/operators';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-crisis-list',
@@ -43,5 +44,4 @@ export class CrisisListComponent implements OnInit {
       err => console.log(err)
     );
   }
-
 }
